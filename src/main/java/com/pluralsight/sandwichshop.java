@@ -11,19 +11,29 @@ public class sandwichshop {
         //Establish the known values
         double priceRegular = 5.45;
         double priceLarge = 8.95;
+        double loadedregular = 1.00;
+        double loadedlarge = 1.75;
         float discountStudentPercent = 0.10f;
         float discountSeniorPercent = 0.20f;
+
 
 
         //get unknown values(what size and age )
         System.out.println("What Sandwich Size do you want (1 or 2)");
         System.out.println(" 1. Regular Size: $5.45");
-        System.out.println(" 2. Regular Size: $8.95");
+        System.out.println(" 2. Large Size: $8.95");
         System.out.println("Please select ( 1 or 2 )");
         int userOption = scanner.nextInt();
 
+        //Check if they would like it loaded
+        System.out.println("Would you like your Sandwich loaded?");
+        System.out.println("1. Regular Loaded: $1.00");
+        System.out.println("2. Large Size: 1.75");
+        System.out.println(" Please select (1 or 2)");
+        int userloadedchoice = scanner.nextInt();
+
         //Get the Users age
-        System.out.println("What is your age?:" );
+        System.out.println("What is your age?: " );
         int userAge = scanner.nextInt();
 
 
@@ -37,7 +47,14 @@ public class sandwichshop {
             subtotal=priceLarge;
         }
 
+        //Identify if the user wants sandwich loaded.
 
+        if (userloadedchoice == 1 ){
+            subtotal = subtotal + loadedregular;
+        }
+        else {
+            subtotal = subtotal+loadedlarge;
+        }
 
         //identify if the user is eligible for discount.
         //Calculate discount

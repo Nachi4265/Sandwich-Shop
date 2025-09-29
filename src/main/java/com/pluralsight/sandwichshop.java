@@ -6,57 +6,79 @@ public class sandwichshop {
 
     public static void main(String[]args){
 
-        Scanner input = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+
+        //Establish the known values
+        double priceRegular = 5.45;
+        double priceLarge = 8.95;
+        float discountStudentPercent = 0.10f;
+        float discountSeniorPercent = 0.20f;
 
 
-        //Prompt the user for the size of the sandwich (1 or 2):
-        System.out.print("What size sandwich would we like today, regular or large? : ");
-        String sizeChoice = input.nextLine();
+        //get unknown values(what size and age )
+        System.out.println("What Sandwich Size do you want (1 or 2)");
+        System.out.println(" 1. Regular Size: $5.45");
+        System.out.println(" 2. Regular Size: $8.95");
+        System.out.println("Please select ( 1 or 2 )");
+        int userOption = scanner.nextInt();
 
-        //Prompt the user for their age. 17 and younger or 65 and older:
-        System.out.print("How old are you? : ");
-        int age = input.nextInt();
+        //Get the Users age
+        System.out.println("What is your age?:" );
+        int userAge = scanner.nextInt();
 
 
-        //Display what our user chooses
-//        System.out.println("Okay you want " + sizeChoice);
-//        System.out.println("Okay you're " + age);
+        //Identify the base price of the sandwich
+        double subtotal;
 
-        //Declare Sandwich prices
-        double regularSandwichPrice = 5.45;
-        double largeSandwichPrice = 8.95;
-
-        //Declare Discount percentage
-        double tenPercentDiscount = .10;
-        double twentyPercentDiscount = .20;
-
-        double regularSandwichDiscounted = regularSandwichPrice - (regularSandwichPrice * tenPercentDiscount / 100);
-
-        if (age < 65 && sizeChoice == "regular"){
-            System.out.println(regularSandwichDiscounted);
+        if (userOption == 1){
+            subtotal = priceRegular;
         }
-        else;
+        else {
+            subtotal=priceLarge;
+        }
 
 
 
+        //identify if the user is eligible for discount.
+        //Calculate discount
+        double discountPercent;
+
+        if (userAge <= 17) {
+            //student discount
+            discountPercent = discountStudentPercent;
+        }else if (userAge >= 65){
+            //Senior discount
+            discountPercent = discountSeniorPercent;
+        }
+        else {
+            //no discount
+            discountPercent=0;
+        }
+
+        //Calculate discount
+        double discountAmount = subtotal * discountPercent;
 
 
-//        if (sizeChoice.equals("regular")){
-//            System.out.println(regularSandwichPrice);
-//        }
-//        else if ( sizeChoice.equals("large")){
-//            System.out.println(largeSandwichPrice);
-//        }
+        //calculate the subtotal
+        double totaldue = subtotal - discountPercent;
 
 
+        //display the results
+        //size of the sandwich and the price
+        //Was discount applied
+        //What was the total
 
-
-
-        //Next we want to check what they chose and save it
+        System.out.printf("Subtotal: $%.2f\n", subtotal);
+        System.out.printf("Discount: $%.2f\n", discountAmount);
+        System.out.printf("Total Due: $%.2f\n", totaldue);
 
 
 
 
     }
 
+
 }
+
+
+
